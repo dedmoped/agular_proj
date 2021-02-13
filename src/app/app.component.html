@@ -1,0 +1,20 @@
+<div>
+<form>
+    <fieldset>
+        <legend>Login</legend>
+        <div class="form-field">
+            <label>Email:</label>
+            <input name="email" #email>
+        </div>
+        <div class="form-field">
+            <label>Password:</label>
+            <input name="password" type="password" #password>
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button class="button button-primary" 
+                (click)="login(email.value,password.value)">Login</button>
+    </div>
+</form>
+<router-outlet></router-outlet>
+</div>
