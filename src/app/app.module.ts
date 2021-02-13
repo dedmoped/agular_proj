@@ -9,7 +9,9 @@ import { API_URL } from './app-injection-tokens';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ACCESS_TOKEN_KEY } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import {RegistrationComponent} from '../app/components/registration/registration.component'
+import { ToastrModule } from 'ngx-toastr';
 export function tokenGetter(){
   return localStorage.getItem(ACCESS_TOKEN_KEY);
 }
@@ -17,14 +19,17 @@ export function tokenGetter(){
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
     JwtModule.forRoot({
       config:{
       tokenGetter,
