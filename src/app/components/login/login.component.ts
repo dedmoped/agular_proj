@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit   {
   
   ngOnInit() {
   this.loginForm = this.formBuilder.group({
-  email: ['', Validators.email],
+  email: ['', [Validators.required,Validators.email]],
   password: ['', Validators.required]
   });
   

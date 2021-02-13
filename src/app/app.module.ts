@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { API_URL } from './app-injection-tokens';
 import { JwtModule } from '@auth0/angular-jwt';
-import { ACCESS_TOKEN_KEY } from './auth.service';
+import { ACCESS_TOKEN_KEY } from './services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {RegistrationComponent} from '../app/components/registration/registration.component'
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './components/home/home.component';
 export function tokenGetter(){
   return localStorage.getItem(ACCESS_TOKEN_KEY);
 }
@@ -20,7 +21,8 @@ export function tokenGetter(){
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

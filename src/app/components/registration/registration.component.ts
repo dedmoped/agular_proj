@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -23,9 +23,7 @@ export class RegistrationComponent implements OnInit {
 
     ngOnInit() {
       this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phone: ['', Validators.required],
+      login: ['', [Validators.required,Validators.minLength(4)]],
       email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
       });
@@ -45,7 +43,7 @@ alert('User Registered successfully!!');
 this.router.navigate(['/login']);
 },
 (error)=>{
-this.toastr.error(error.error.message, 'Error');
+this.toastr.error(error.error.message, 'Проверьте данные',{timeOut:3000,positionClass:'bottom-right'});
 this.loading = false;
 }
 )
